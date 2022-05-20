@@ -1,0 +1,18 @@
+name: 'version-tag'
+
+inputs:
+    version:
+        required: true
+        description: |
+            Version of the app.
+            Ex: '1.0.0'.
+
+runs:
+    using: 'composite'
+
+    steps:
+        - name: 'Tag version'
+          shell: 'bash'
+          run: |
+              git tag ${{ inputs.version }}
+              git push --tags
